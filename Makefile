@@ -5,15 +5,15 @@ all: index simple nyuszi
 index: index.html index.py README.md
 	python index.py $(PUBLICDIR)/index.html
 
-simple: simple.css/simple.css
-	cp simple.css/simple.css $(PUBLICDIR)/
+simple: simple.css
+	cp simple.css $(PUBLICDIR)/
 
 nyuszi:	nyuszi.png
 	cp nyuszi.png $(PUBLICDIR)/
 
 
 commit:
-	git commit --file message.txt
+	git commit -a --file message.txt
 
 push:
 	git push -u origin main
