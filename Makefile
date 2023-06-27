@@ -1,16 +1,13 @@
 PUBLICDIR = docs
+BB = /bin/busybox
 
-all: index simple nyuszi
+all: index nyuszi
 
-index: index.html index.py README.md
-	python index.py $(PUBLICDIR)/index.html
-
-simple: simple.css
-	cp simple.css $(PUBLICDIR)/
+index: index.tpl README.md 
+	$(BB) sh index.sh > $(PUBLICDIR)/index.html
 
 nyuszi:	nyuszi.png
-	cp nyuszi.png $(PUBLICDIR)/
-
+	$(BB) cp nyuszi.png $(PUBLICDIR)
 
 commit:
 	git commit -a --file message.txt
@@ -19,13 +16,13 @@ push:
 	git push -u origin main
 
 stru:
-	mkdir $(PUBLICDIR)
+	$(BB) mkdir $(PUBLICDIR)
 
 clean:
-	rm $(PUBLICDIR)/*	
+	$(BB) rm $(PUBLICDIR)/*	
 
 server:
-	python -m http.server --directory $(PUBLICDIR)/
+	$(BB) httpd -f -v -p 1414 -h $(PUBLICDIR)/
 
 grip:	README.md
 	grip README.md

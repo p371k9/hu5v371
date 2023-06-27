@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>húsvéti</title>
-    <link rel="stylesheet" href="simple.css">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple-v1.css">
 </head>
 <body>
-{{ tart }}
+%s
 </body>
 </html>
